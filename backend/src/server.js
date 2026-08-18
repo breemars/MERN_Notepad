@@ -3,10 +3,8 @@ import express from "express"; //imports the express
 
 const app = express() //create new express app
 
-
-app.get("/api/notes", (req,res) => {
-    res.send("you got 5 notes");
-});
+import notesRoutes from "./routes/notesRoutes.js"
+app.use("/api/notes", notesRoutes); //adds a prefix that will be applied before any specifics for the URL
 
 //listen on a port
 app.listen(5001, () => { console.log("PORT 5001"); });
