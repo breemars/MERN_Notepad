@@ -8,7 +8,8 @@ import toast from "react-hot-toast"
 
 const App = () => {
   return (
-    <div data-theme="forest">
+    <div className="bg-[url('./assets/mesh-bg.png')]"> 
+    {/* <div data-theme="forest"> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreatePage />} />
