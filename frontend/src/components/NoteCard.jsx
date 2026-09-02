@@ -3,11 +3,35 @@ import { Link } from 'react-router'
 import { PenSquareIcon, Trash2Icon } from "lucide-react";
 {/* Needs the {} since it is an export function */}
 import { formatDate } from "../lib/dateFormatter.js" 
+import api from "../lib/axios"
+import toast from 'react-hot-toast'
 
-const colors = ["amber-200", "pink-500", "cyan-300", "indigo-500"]
+const colors = ["border-amber-200", "border-pink-500", "border-cyan-300", "border-indigo-500"]
 
 
-const NoteCard = ({note}) => {
+const NoteCard = ({note, setNotes}) => {
+    
+    const handleDelete = async (e, id) => {
+        e.preventDefault(); // the entire notecard is a link, this get rid of that navigation behaviour
+
+        if (!window.confirm("Are you sure you want to delete this note?")) return; //returns if they select no, will continue otherwise
+
+        try {
+            await api.delete(`/notes/${id}`); //send the request to the api
+            
+            //  get all prev notes => filter out the note to delete(get all notes => where id is not the deleted note's id)
+            setNotes((prev) => prev.filter((note) => note._id !== id)); // refreshes the UI to show that it has been removed
+            
+            toast.success("Note deleted successfully");
+        } catch (error) {
+            console.log("Error Deleting Note", error);
+            toast.error("Failed to delete note");
+        }
+    };
+    
+    
+    
+    
     const randomHoverColor = colors[Math.floor(Math.random() * colors.length)];
 
     
@@ -22,7 +46,7 @@ const NoteCard = ({note}) => {
         duration-200 
         border-t-4 
         border-solid 
-        border-${randomHoverColor}
+        ${randomHoverColor}
         hover:border-white
         hover:shadow-none
         hover:bg-base-100/50
@@ -44,8 +68,8 @@ const NoteCard = ({note}) => {
                     </button>
 
     
-                    <button className="btn btn-ghost btn-xs text-error p-1.5">
-                    {/* onClick={(e) => handleDelete(e, note._id)} */}
+                    <button className="btn btn-ghost btn-xs text-error p-1.5"
+                        onClick={(e) => handleDelete(e, note._id)}>
                     
                         <Trash2Icon className="size-4" />
                     </button>

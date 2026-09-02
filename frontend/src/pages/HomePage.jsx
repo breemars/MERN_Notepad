@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Navbar from "../components/Navbar"
 import NoteCard from "../components/NoteCard"
+import NoNotesFound from "../components/NoNotesFound"
 import RateLimitedUI from "../components/RateLimitedUI"
 import toast from 'react-hot-toast'
 import api from "../lib/axios"
@@ -54,12 +55,15 @@ const HomePage = () => {
                 {/* Loading text */}
                 {loading && <div className="text-center text-primary py-10">Loading Notes...</div>}
                 
+                {/* No Notes text */}
+                {notes.length === 0 && !isRateLimited && !loading && <NoNotesFound />}
+                
                 {/* Display notes cards */}
                 {notes.length > 0 && !isRateLimited && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {/* Map all the notes to NotesCard components */}
                         {notes.map((note) => (           
-                            <NoteCard key={note._id} note={note} />
+                            <NoteCard key={note._id} note={note} setNotes={setNotes} />
                         ))}
                     </div>
                 )}

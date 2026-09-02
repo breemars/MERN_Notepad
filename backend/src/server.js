@@ -2,6 +2,7 @@
 import cors from "cors"
 import express from "express"; //imports the express
 //const express = require("express"); //imports with no warnings
+import path from "path";
 
 //local imports 
 import { connectDB } from "./config/db.js";
@@ -34,6 +35,15 @@ app.use((req,res,next) => {
 //
 
 app.use("/api/notes", notesRoutes); //adds a prefix that will be applied before any specifics for the URL
+
+
+//find the dist folder and serve the folder?
+//const __dirname = path.resolve()
+//app.use(express.static(path.join(__dirname, "../frontend/dist")))
+//app.get("*", (req, res) => {
+//    res.sendFile(path.join(__dirname, "../frontend", "dist"))
+
+//})
 
 //listen on a port
 const PORT = process.env.PORT; // || number; for a backup port

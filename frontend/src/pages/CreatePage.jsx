@@ -16,7 +16,7 @@ const CreatePage = () => {
   {/* Runs once they submit the form */}
   const handleSubmit = async (e) => {
     
-    {/* Stops the page from refreshing on click */}
+    {/* Stops the FORM from refreshing on click, forms automatically do this, BUTTONS DO NOT */}
     e.preventDefault();
 
     {/* Ensure the fields are filled */}
