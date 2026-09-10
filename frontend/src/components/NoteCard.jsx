@@ -30,11 +30,11 @@ const NoteCard = ({note, setNotes}) => {
             // updating the state causes HomePage to re-render, redisplaying all the notecards
             setNotes((prev) => prev.filter((note) => note._id !== id)); 
             
-            toast.success("Note deleted successfully");
+            toast.success("Note Deleted Successfully");
         
         } catch (error) {
             console.log("Error Deleting Note", error);
-            toast.error("Failed to delete note");
+            toast.error("Failed to Delete Note");
         }
     };
 

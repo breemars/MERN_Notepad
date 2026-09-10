@@ -25,7 +25,7 @@ const CreatePage = () => {
     {/* Ensure the fields are filled */}
     //trim removes whitespace from beginning and end
     if (!title.trim() || !content.trim()) {
-      toast.error("All fields are required");
+      toast.error("Both Fields are Required");
       return;
     }
 
@@ -36,7 +36,7 @@ const CreatePage = () => {
     try {
       await api.post("/notes", {title, content});
 
-      toast.success("Note created successfully!");
+      toast.success("Note Created Successfully!");
 
       {/* Back to the home page after a successful creation*/}
       navigate("/");
@@ -46,13 +46,13 @@ const CreatePage = () => {
 
       //Rate Limited
       if (error.response?.status === 429) {
-        toast.error("Slow down! You're creating notes too fast", {
+        toast.error("Slow down! You're creating notes too fast!", {
           duration: 4000,
           icon: "💀",
         });
 
       } else {
-        toast.error("Failed to create note");
+        toast.error("Failed to Create Note");
       }
 
     } finally {

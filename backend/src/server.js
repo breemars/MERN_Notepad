@@ -26,9 +26,12 @@ const app = express()
 
 //CORS allows the API to accept requests from the frontend (a different origin/URL)
 //Must be ran firs in the middleware to avoid CORS errors 
-app.use(cors({
-    origin:"http://localhost:5173", 
-}));
+//Since in production, we are running frontend and backend from the same origin, it is only needed when not in production
+if(process.env.NODE_ENV !== "production"){
+    app.use(cors({
+        origin:"http://localhost:5173", 
+    }));
+}
 
 //Reads incoming JSON data and converts it into a JavaScript object
 //Runs before the routes so that they can access the body/title/content data
@@ -49,14 +52,15 @@ app.use((req,res,next) => {
 //For organization and avoid repetition when typing out the URLs
 app.use("/api/notes", notesRoutes); 
 
-
-//find the dist folder and serve the folder?
-//const __dirname = path.resolve()
-//app.use(express.static(path.join(__dirname, "../frontend/dist")))
-//app.get("*", (req, res) => {
-//    res.sendFile(path.join(__dirname, "../frontend", "dist"))
-
-//})
+//Finds the dist folder and runs the frontend react application when in production
+// Express 5 requires the wildcard (*) to have a name, splat is the wildcard and it catches all the routes
+if(process.env.NODE_ENV === "production"){
+    const __dirname = path.resolve()
+    app.use(express.static(path.join(__dirname, "../frontend/dist")))
+    app.get("/{*splat}", (req, res) => {
+        res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"))
+    })
+}
 
 //Get the port 
 const PORT = process.env.PORT; // || number; for a backup port

@@ -49,12 +49,12 @@ const NoteDetailPage = () => {
 
     try {
       await api.delete(`/notes/${id}`);
-      toast.success("Note deleted");
+      toast.success("Note Deleted");
       navigate("/"); //Back to the homepage 
 
     } catch (error) {
       console.log("Error deleting the note:", error);
-      toast.error("Failed to delete note");
+      toast.error("Failed to Delete Note");
     }
   };
 
@@ -63,7 +63,7 @@ const NoteDetailPage = () => {
       
         //Makes sure both fields contain text
         if (!note.title.trim() || !note.content.trim()) {
-          toast.error("Please add a title or content");
+          toast.error("Please add a Title and/or Content");
           return;
         }
 
@@ -72,12 +72,12 @@ const NoteDetailPage = () => {
         //Try to send the updated note to the backend
         try {
           await api.put(`/notes/${id}`, note);
-          toast.success("Note updated successfully");
+          toast.success("Note Updated Successfully");
           navigate("/"); //back to the homepage 
 
         } catch (error) {
           console.log("Error saving the note:", error);
-          toast.error("Failed to update note");
+          toast.error("Failed to Update Note");
 
         } finally {
           setSaving(false);
