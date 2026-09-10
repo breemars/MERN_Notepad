@@ -12,13 +12,11 @@ const Navbar = () => {
                 <h1 className="text-3xl font-bold text-black font-mono tracking-tight">vibepad</h1> {/* tracking-tight = letter spacing */}
             
                 {/* Create New Note Button */}
-                <div className="flex items-center gap-4 border border-black"> {/* this div necessary? */}
-                    <Link to={"/create"} className="btn btn-primary">
-                        <PlusIcon className='size-5'/>
-                        <span>New Note</span>
-                    </Link>
-                </div>
-
+                <Link to={"/create"} className="btn btn-primary border-black/60 border-2">
+                    <PlusIcon className='size-5'/>
+                    <span>New Note</span>
+                </Link>
+                
             </div>
         </div>
     </header>

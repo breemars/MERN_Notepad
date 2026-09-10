@@ -87,8 +87,8 @@ const NoteDetailPage = () => {
   {/* Shows spinning wheel when loading the note details instead of the note fields*/}
   if (loading) {
       return (
-        <div className="min-h-screen bg-base-200 flex items-center justify-center">
-          <LoaderIcon className="animate-spin size-10" />
+        <div className="min-h-screen flex items-center justify-center">
+          <LoaderIcon className="animate-spin size-10 text-black" />
         </div>
       );
   }
@@ -110,7 +110,7 @@ const NoteDetailPage = () => {
             </Link>
 
             {/* Delete button */}
-            <button className="btn btn-error btn-outline" onClick={() => handleDelete()}>
+            <button className="btn btn-error" onClick={() => handleDelete()}>
               <Trash2Icon className="h-5 w-5" />
               Delete Note
             </button>

@@ -7,7 +7,7 @@ const RateLimitedUI = () => {
       <div className="bg-primary/15 border-2 border-primary/30 rounded-lg shadow-md"> {/* Faded Green BG */}
         <div className="flex flex-col md:flex-row items-center p-4"> {/* Makes 2 cols for large screens, one for small */}
           
-          <div className="bg-amber-300/40 p-4 border-2 border-primary/50 rounded-full md:mb-0 md:mr-6"> {/* md:mr-6 = medium and larger, add right margin */}
+          <div className="bg-amber-300/45 p-4 border-2 border-primary/50 rounded-full md:mb-0 md:mr-6"> {/* md:mr-6 = medium and larger, add right margin */}
             <ZapIcon className="size-12 text-black" />
           </div>
           

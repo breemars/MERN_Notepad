@@ -1,7 +1,8 @@
 //useState: stores information that can change over time, the component is re-rendered when it does
 //useEffect: actions like getting data or listening for events (some external system) that automatically start on render
 import { useEffect, useState } from 'react'
- 
+
+import { LoaderIcon } from "lucide-react"; 
 import Navbar from "../components/Navbar"
 import NoteCard from "../components/NoteCard"
 import NoNotesFound from "../components/NoNotesFound"
@@ -63,9 +64,11 @@ const HomePage = () => {
             { /* max-w-7xl limits the width, mx-auto centers the container, p-4 padding, mt-6 top margin */ }
             <div className="max-w-7xl mx-auto p-4 mt-6">
                 
-                {/* Loading text */}
-                {loading && <div className="text-center text-primary py-10">Loading Notes...</div>}
-                
+                {/* Loading Spinning Wheel */}
+                {loading && <div className="min-h-screen flex items-center justify-center">
+                                <LoaderIcon className="animate-spin size-10 text-black" />
+                            </div>}
+
                 {/* No Notes text */}
                 {notes.length === 0 && !isRateLimited && !loading && <NoNotesFound />}
                 
