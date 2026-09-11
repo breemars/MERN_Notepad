@@ -105,8 +105,7 @@ The frontend will then be available at the local URL provided by Vite.
 
 ## 📚 Project Background
 
-vibepad was built to practice building a REST API, connecting a React frontend to a Node.js/Express backend, working with MongoDB, creating middleware, and implementing API rate limiting with Upstash.
-
+I wanted to refresh my coding skills and get back into full-stack development, and what better way to start than with a classic notepad application? vibepad was built to practice building a REST API, connecting a React frontend to a Node.js/Express backend, working with MongoDB, creating middleware, and implementing API rate limiting with Upstash.
 
 ## 📸 Screenshots
 
