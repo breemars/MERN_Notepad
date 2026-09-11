@@ -11,7 +11,7 @@ You can view the project here:
 
 vibepad allows users to create, view, edit, and delete notes through a React frontend connected to a REST API.
 
-> **Note:** I completed this project by following this tutorial: [MERN ThinkBoard](https://github.com/burakorkmez/mern-thinkboard). However, I made updates to the user interface and implemented it using current package versions.
+> **Note:** I completed this project by following this tutorial: [MERN ThinkBoard GitHub](https://github.com/burakorkmez/mern-thinkboard) [Youtube Video](https://www.youtube.com/watch?v=F9gB5b4jgOI). However, I made updates to the user interface and implemented it using current package versions.
 
 ## ✨ Features
 
